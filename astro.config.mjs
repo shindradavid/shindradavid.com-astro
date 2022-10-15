@@ -9,9 +9,7 @@ import { remarkReadingTime } from './src/lib/remark-plugins';
 export default defineConfig({
 	site: 'https://shindradavid.vercel.app',
 	markdown: {
-		shikiConfig: {
-			theme: 'dark-plus'
-		},
+		syntaxHighlight: 'prism',
 		remarkPlugins: [remarkReadingTime],
 		rehypePlugins: [],
 		extendDefaultPlugins: true
