@@ -1,0 +1,22 @@
+---
+// props
+interface Props {
+	name: string;
+	tagline: string;
+	description: string;
+}
+
+const { name, tagline, description } = Astro.props;
+---
+
+<section>
+	<header>
+		<slot name="icon" />
+		<h2>{name}</h2>
+		<p>{tagline}</p>
+		<p>{description}</p>
+	</header>
+	<div>
+		<slot name="image" />
+	</div>
+</section>

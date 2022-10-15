@@ -1,15 +1,30 @@
 ---
+interface Frontmatter {
+	title: string;
+	description: string;
+	readingTime: string;
+}
+
+import MainLayout from '@layouts/MainLayout.astro';
+
+const articles = await Astro.glob<Frontmatter>('./blog/**/*.mdx');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+	<h1>Astro</h1>
+	<p class:list={['hey', 'there', { ok: true }]}>Hey</p>
+
+	<ul>
+		{
+			articles.length &&
+				articles.map(({ url, frontmatter }) => (
+					<li>
+						<a href={url && url}>{frontmatter.title}</a>
+						<p>{frontmatter.readingTime}</p>
+					</li>
+				))
+		}
+	</ul>
+</MainLayout>
+
+<style lang="scss"></style>
