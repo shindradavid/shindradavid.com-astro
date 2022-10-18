@@ -12,8 +12,6 @@ const articles = await Astro.glob<Frontmatter>('./blog/**/*.mdx');
 
 <MainLayout>
 	<h1>Astro</h1>
-	<p class:list={['hey', 'there', { ok: true }]}>Hey</p>
-
 	<ul>
 		{
 			articles.length &&
@@ -27,4 +25,8 @@ const articles = await Astro.glob<Frontmatter>('./blog/**/*.mdx');
 	</ul>
 </MainLayout>
 
-<style lang="scss"></style>
+<style lang="scss">
+	@use 'src/styles/abstracts/mixins' as *;
+	@use 'src/styles/abstracts/pallette' as *;
+	@use 'src/styles/abstracts/variables' as *;
+</style>

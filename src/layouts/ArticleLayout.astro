@@ -15,11 +15,11 @@ import ChevronRightLine from '@lib/icons/line/ChevronRightLine.svelte';
 const { frontmatter, url } = Astro.props;
 ---
 
-<slot name="head">
+<head slot="head">
 	{url && <link rel="canonical" href={new URL(url, Astro.site)} />}
 	<title>{frontmatter.title}</title>
 	<meta name="description" content={frontmatter.description} />
-</slot>
+</head>
 
 <MainLayout>
 	<article>
@@ -32,3 +32,9 @@ const { frontmatter, url } = Astro.props;
 		<slot />
 	</article>
 </MainLayout>
+
+<style lang="scss">
+	@use 'src/styles/abstracts/mixins' as *;
+	@use 'src/styles/abstracts/pallette' as *;
+	@use 'src/styles/abstracts/variables' as *;
+</style>

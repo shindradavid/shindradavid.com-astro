@@ -14,18 +14,5 @@ export default defineConfig({
 		rehypePlugins: [],
 		extendDefaultPlugins: true
 	},
-	integrations: [sitemap(), mdx(), svelte()],
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					additionalData: `
-	          // @use "src/styles/abstracts/variables";
-	          // @use "src/styles/abstracts/pallette";
-	          // @use "src/styles/abstracts/mixins" as *;
-	        `
-				}
-			}
-		}
-	}
+	integrations: [sitemap(), mdx(), svelte()]
 });
