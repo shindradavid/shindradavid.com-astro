@@ -1,12 +1,5 @@
 ---
 // types
-interface ArticleFrontmatter {
-	title: string;
-	description: string;
-	readingTime: string;
-	publishedOn: string;
-	tags: string[];
-}
 // layouts
 import MainLayout from '@layouts/MainLayout.astro';
 // components
@@ -14,14 +7,20 @@ import ArticleCard from '@components/ArticleCard.astro';
 // lib
 // state
 const articles = await Astro.glob<ArticleFrontmatter>('./blog/**/*.mdx');
+const seoMetadata: SeoMetadata = {
+	title: 'Shindra David',
+	description: 'Web developer and consultant based in Uganda'
+};
 ---
 
-<MainLayout>
+<MainLayout {...seoMetadata}>
 	<h1>Astro</h1>
 	<section>
 		<header>
 			<h2>Latest blog articles</h2>
-			<a href="/blog">see more</a>
+			<a href="/blog" aria-label="see more articles">
+				see more <span class="sr-only">articles</span>
+			</a>
 		</header>
 		{
 			articles.length ? (

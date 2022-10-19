@@ -11,23 +11,16 @@ import { formatDate } from '@lib/datetime';
 // props
 import type { MarkdownLayoutProps } from 'astro';
 
-type Props = MarkdownLayoutProps<{
-	title: string;
-	description: string;
-	publishedOn: string;
-	tags: string[];
-}>;
+interface Props extends MarkdownLayoutProps<ArticleFrontmatter> {}
 
 const { frontmatter, url } = Astro.props;
+const seoMetadata: SeoMetadata = {
+	title: frontmatter.title,
+	description: frontmatter.description
+};
 ---
 
-<head slot="head">
-	{url && <link rel="canonical" href={new URL(url, Astro.site)} />}
-	<title>{frontmatter.title}</title>
-	<meta name="description" content={frontmatter.description} />
-</head>
-
-<MainLayout>
+<MainLayout {...seoMetadata}>
 	<article class="article">
 		<header class="article__header">
 			<ul aria-label="breadcrumbs" class="breadcrumbs">

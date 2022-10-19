@@ -5,3 +5,18 @@ declare namespace svelte.JSX {
 		onclickOutsideNav?: (e: CustomEvent) => void;
 	}
 }
+
+interface ArticleFrontmatter {
+	title: string;
+	description: string;
+	readingTime: string;
+	publishedOn: string;
+	tags: string[];
+	draft: boolean;
+}
+
+interface SeoMetadata {
+	title: string;
+	description: string;
+	socialImageURL?: string;
+}

@@ -1,13 +1,13 @@
 ---
 import MainLayout from '@layouts/MainLayout.astro';
+
+const seoMetadata: SeoMetadata = {
+	title: 'FAQs',
+	description: 'Find answers to questions am frequently asked.'
+};
 ---
 
-<head slot="head">
-	<title>FAQs</title>
-	<meta name="description" content="Find answers to questions am frequently asked." />
-</head>
-
-<MainLayout>
+<MainLayout {...seoMetadata}>
 	<h1>FAQ</h1>
 </MainLayout>
 

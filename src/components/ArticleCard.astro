@@ -27,9 +27,11 @@ const { title, readingTime, publishedOn, tags, url } = Astro.props;
 	@use 'src/styles/abstracts/variables' as *;
 	.article {
 		padding: $spacing-sm;
+		margin: $spacing-sm 0;
 		background-color: var(--bg-secondary);
 		&__datetime {
-			font-size: var(--fs-sm);
+			font-size: var(--fs-xs);
+			color: var(--txt-tertiary);
 		}
 		&__title {
 			a {
