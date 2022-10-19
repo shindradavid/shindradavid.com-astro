@@ -10,6 +10,7 @@
 		"e2e": "cypress open",
 		"build": "astro build",
 		"preview": "astro preview",
+		"previewLocal": "astro preview --host 192.168.43.12",
 		"astro": "astro",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
