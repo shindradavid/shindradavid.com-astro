@@ -2,9 +2,29 @@
 ---
 
 <section class="hero">
-	<h1 class="hero__title">I create conversion optimized marketing and e-commerce websites.</h1>
-	<div class="hero__copy">
-		<p class="description">Hi, Iam Shindra David, a web developer based in Uganda</p>
-		<a href="/" class="cta">contact me</a>
+	<div class="copy">
+		<h1 class="title">I create conversion optimized marketing and e-commerce websites.</h1>
+		<div class="copy">
+			<p class="description">Hi, Iam Shindra David, a web developer based in Uganda</p>
+			<a href="/contact" class="cta">contact me</a>
+		</div>
 	</div>
+	<div class="portfolio"></div>
 </section>
+
+<style lang="scss">
+	@use 'src/styles/abstracts/mixins' as *;
+	@use 'src/styles/abstracts/pallette' as *;
+	@use 'src/styles/abstracts/variables' as *;
+
+	.hero {
+		--bg-primary: var(--accent-color);
+		--txt-primary: #{$gray-900};
+		--txt-secondary: #{$gray-800};
+
+		background-color: var(--bg-primary);
+		color: var(--txt-secondary);
+		padding: $spacing-lg 0;
+		@include page-lr-padding;
+	}
+</style>

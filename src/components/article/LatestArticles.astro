@@ -22,6 +22,7 @@ const { articles } = Astro.props;
 	@use 'src/styles/abstracts/variables' as *;
 	section {
 		margin-top: $spacing-md;
+		@include page-lr-padding;
 		header {
 			display: flex;
 			align-items: center;

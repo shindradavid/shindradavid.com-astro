@@ -40,7 +40,16 @@ const { title, description } = Astro.props;
 
 	<body>
 		<Header url={url} client:media="(max-width: 780px)" />
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<Footer />
+		<style lang="scss">
+			@use 'src/styles/abstracts/mixins' as *;
+
+			main {
+				@include page-lr-padding;
+			}
+		</style>
 	</body>
 </html>
