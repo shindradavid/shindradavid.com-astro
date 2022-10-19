@@ -61,12 +61,18 @@
 		padding-right: $spacing-xl;
 	}
 	@include screen-xl {
-		padding-left: $spacing-2xl;
-		padding-right: $spacing-2xl;
+		padding-left: $spacing-4xl;
+		padding-right: $spacing-4xl;
 	}
-	@include screen-3xl {
-		padding-left: $spacing-3xl;
-		padding-right: $spacing-3xl;
+	@include screen-2xl {
+		padding-left: $spacing-6xl;
+		padding-right: $spacing-6xl;
+	}
+	@include screen-2xl {
+		padding-left: $spacing-6xl;
+		padding-right: $spacing-6xl;
+		max-width: 1440px;
+		margin: 0 auto;
 	}
 }
 
