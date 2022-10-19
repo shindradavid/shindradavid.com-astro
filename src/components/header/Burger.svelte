@@ -9,6 +9,10 @@
 </span>
 
 <style lang="scss">
+	@use 'src/styles/abstracts/mixins' as *;
+	@use 'src/styles/abstracts/pallette' as *;
+	@use 'src/styles/abstracts/variables' as *;
+
 	.burger {
 		box-sizing: content-box;
 		$bar-height: 4px;
@@ -21,6 +25,10 @@
 		background-color: inherit;
 		color: inherit;
 		padding: 4px;
+
+		@include screen-lg {
+			display: none;
+		}
 
 		& > .bar {
 			transition: 0.5s;
