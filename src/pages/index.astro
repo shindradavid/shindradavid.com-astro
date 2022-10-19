@@ -3,6 +3,7 @@ interface Frontmatter {
 	title: string;
 	description: string;
 	readingTime: string;
+	tags: string[];
 }
 
 import MainLayout from '@layouts/MainLayout.astro';
@@ -19,6 +20,11 @@ const articles = await Astro.glob<Frontmatter>('./blog/**/*.mdx');
 					<li>
 						<a href={url && url}>{frontmatter.title}</a>
 						<p>{frontmatter.readingTime}</p>
+						<ul>
+							{frontmatter.tags.slice(0, 3).map((tag) => (
+								<li class:list={[`tag tag-${tag}`]}>{tag}</li>
+							))}
+						</ul>
 					</li>
 				))
 		}

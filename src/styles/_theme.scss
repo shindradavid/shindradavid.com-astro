@@ -47,13 +47,13 @@
 	background-color: var(--bg-tertiary);
 }
 
-// @include screen-lg {
-// 	/* width */
-// 	::-webkit-scrollbar {
-// 		height: 8px;
-// 		width: 8px;
-// 	}
-// }
+@include screen-lg {
+	/* width */
+	::-webkit-scrollbar {
+		height: 8px;
+		width: 8px;
+	}
+}
 
 body {
 	color: var(--txt-secondary);
