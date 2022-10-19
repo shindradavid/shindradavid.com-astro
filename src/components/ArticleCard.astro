@@ -25,6 +25,7 @@ const { title, readingTime, publishedOn, tags, url } = Astro.props;
 	@use 'src/styles/abstracts/mixins' as *;
 	@use 'src/styles/abstracts/pallette' as *;
 	@use 'src/styles/abstracts/variables' as *;
+
 	.article {
 		padding: $spacing-md;
 		margin: $spacing-sm 0;
@@ -37,6 +38,7 @@ const { title, readingTime, publishedOn, tags, url } = Astro.props;
 		}
 		&__title {
 			padding-top: $spacing-xs;
+			margin: 0;
 			a {
 				text-decoration: none;
 			}
