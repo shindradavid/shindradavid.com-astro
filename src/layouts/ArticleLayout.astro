@@ -21,20 +21,28 @@ const seoMetadata: SeoMetadata = {
 ---
 
 <MainLayout {...seoMetadata}>
-	<article class="article">
+	<article itemscope itemtype="https://schema.org/Article" class="article">
 		<header class="article__header">
 			<ul aria-label="breadcrumbs" class="breadcrumbs">
 				<li><a href="/">Home</a><ChevronRightLine /></li>
 				<li><a href="/blog">Blog</a><ChevronRightLine /></li>
 				<li><a href={url} aria-current="page">{frontmatter.title}</a></li>
 			</ul>
-			<h1 class="title">{frontmatter.title}</h1>
-			<p class="published-on">Published on {formatDate(frontmatter.publishedOn)}</p>
+			<h1 itemprop="name headline" class="title">{frontmatter.title}</h1>
+			<p class="published-on">
+				Published on
+				<time itemprop="datePublished" datetime={frontmatter.publishedOn}>
+					{formatDate(frontmatter.publishedOn)}
+				</time>
+			</p>
+
 			<ul aria-label="article tags" class="tags">
 				{frontmatter.tags.slice(0, 3).map((tag) => <li class:list={[`tag tag-${tag}`]}>{tag}</li>)}
 			</ul>
 		</header>
-		<slot />
+		<section itemprop="articleBody">
+			<slot />
+		</section>
 	</article>
 </MainLayout>
 
