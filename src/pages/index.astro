@@ -1,34 +1,36 @@
 ---
-interface Frontmatter {
+// types
+interface ArticleFrontmatter {
 	title: string;
 	description: string;
 	readingTime: string;
+	publishedOn: string;
 	tags: string[];
 }
-
+// layouts
 import MainLayout from '@layouts/MainLayout.astro';
-
-const articles = await Astro.glob<Frontmatter>('./blog/**/*.mdx');
+// components
+import ArticleCard from '@components/ArticleCard.astro';
+// lib
+// state
+const articles = await Astro.glob<ArticleFrontmatter>('./blog/**/*.mdx');
 ---
 
 <MainLayout>
 	<h1>Astro</h1>
-	<ul>
+	<section>
+		<header>
+			<h2>Latest blog articles</h2>
+			<a href="/blog">see more</a>
+		</header>
 		{
-			articles.length &&
-				articles.map(({ url, frontmatter }) => (
-					<li>
-						<a href={url && url}>{frontmatter.title}</a>
-						<p>{frontmatter.readingTime}</p>
-						<ul>
-							{frontmatter.tags.slice(0, 3).map((tag) => (
-								<li class:list={[`tag tag-${tag}`]}>{tag}</li>
-							))}
-						</ul>
-					</li>
-				))
+			articles.length ? (
+				articles.map(({ url, frontmatter }) => <ArticleCard url={url} {...frontmatter} />)
+			) : (
+				<p>No article yet</p>
+			)
 		}
-	</ul>
+	</section>
 </MainLayout>
 
 <style lang="scss">

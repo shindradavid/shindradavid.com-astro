@@ -1,16 +1,22 @@
 ---
 import '@styles/code.scss';
 
+import MainLayout from './MainLayout.astro';
+
+import ChevronRightLine from '@lib/icons/line/ChevronRightLine.svelte';
+
+// lib
+import { formatDate } from '@lib/datetime';
+
+// props
 import type { MarkdownLayoutProps } from 'astro';
 
 type Props = MarkdownLayoutProps<{
 	title: string;
 	description: string;
+	publishedOn: string;
+	tags: string[];
 }>;
-
-import MainLayout from './MainLayout.astro';
-
-import ChevronRightLine from '@lib/icons/line/ChevronRightLine.svelte';
 
 const { frontmatter, url } = Astro.props;
 ---
@@ -22,13 +28,19 @@ const { frontmatter, url } = Astro.props;
 </head>
 
 <MainLayout>
-	<article>
-		<ul aria-label="breadcrumbs">
-			<li><a href="/">Home</a><ChevronRightLine /></li>
-			<li><a href="/blog">Blog</a><ChevronRightLine /></li>
-			<li><a href={url} aria-current="page">{frontmatter.title}</a></li>
-		</ul>
-		<h1>{frontmatter.title}</h1>
+	<article class="article">
+		<header class="article__header">
+			<ul aria-label="breadcrumbs" class="breadcrumbs">
+				<li><a href="/">Home</a><ChevronRightLine /></li>
+				<li><a href="/blog">Blog</a><ChevronRightLine /></li>
+				<li><a href={url} aria-current="page">{frontmatter.title}</a></li>
+			</ul>
+			<h1 class="title">{frontmatter.title}</h1>
+			<p class="published-on">Published on {formatDate(frontmatter.publishedOn)}</p>
+			<ul aria-label="article tags" class="tags">
+				{frontmatter.tags.slice(0, 3).map((tag) => <li class:list={[`tag tag-${tag}`]}>{tag}</li>)}
+			</ul>
+		</header>
 		<slot />
 	</article>
 </MainLayout>
@@ -37,4 +49,8 @@ const { frontmatter, url } = Astro.props;
 	@use 'src/styles/abstracts/mixins' as *;
 	@use 'src/styles/abstracts/pallette' as *;
 	@use 'src/styles/abstracts/variables' as *;
+
+	.article {
+		@include page-lr-padding;
+	}
 </style>
