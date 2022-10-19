@@ -1,6 +1,6 @@
 ---
 // lib
-import { formatDate } from '@lib/datetime';
+import { formatToDate } from '@lib/datetime';
 // props
 interface Props {
 	title: string;
@@ -14,7 +14,7 @@ const { title, readingTime, publishedOn, tags, url } = Astro.props;
 ---
 
 <article class="article">
-	<p class="article__datetime">{formatDate(publishedOn)} - {readingTime}</p>
+	<p class="article__datetime">{formatToDate(publishedOn)} - {readingTime}</p>
 	<h3 class="article__title"><a href={url && url}>{title}</a></h3>
 	<ul aria-label="article tags" class="article__tags">
 		{tags.slice(0, 3).map((tag) => <li class:list={[`tag tag-${tag}`]}>{tag}</li>)}
@@ -28,7 +28,6 @@ const { title, readingTime, publishedOn, tags, url } = Astro.props;
 
 	.article {
 		padding: $spacing-md;
-		margin: $spacing-sm 0;
 		background-color: var(--bg-secondary);
 		box-shadow: var(--shadow-xs);
 		border-radius: $radius-sm;

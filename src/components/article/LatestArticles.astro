@@ -1,0 +1,37 @@
+---
+import ArticleList from './ArticleList.astro';
+
+interface Props {
+	articles: Article[];
+}
+
+const { articles } = Astro.props;
+---
+
+<section>
+	<header>
+		<h2>Latest articles</h2>
+		<a href="/blog">see more <span class="sr-only">articles</span></a>
+	</header>
+	<ArticleList articles={articles} />
+</section>
+
+<style lang="scss">
+	@use 'src/styles/abstracts/mixins' as *;
+	@use 'src/styles/abstracts/pallette' as *;
+	@use 'src/styles/abstracts/variables' as *;
+	section {
+		margin-top: $spacing-md;
+		header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: $spacing-sm 0;
+
+			h2 {
+				font-size: var(--fs-md);
+				margin: $spacing-sm 0;
+			}
+		}
+	}
+</style>

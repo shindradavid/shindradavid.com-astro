@@ -6,7 +6,7 @@ import MainLayout from './MainLayout.astro';
 import ChevronRightLine from '@lib/icons/line/ChevronRightLine.svelte';
 
 // lib
-import { formatDate } from '@lib/datetime';
+import { formatToDate } from '@lib/datetime';
 
 // props
 import type { MarkdownLayoutProps } from 'astro';
@@ -32,7 +32,7 @@ const seoMetadata: SeoMetadata = {
 			<p class="published-on">
 				Published on
 				<time itemprop="datePublished" datetime={frontmatter.publishedOn}>
-					{formatDate(frontmatter.publishedOn)}
+					{formatToDate(frontmatter.publishedOn)}
 				</time>
 			</p>
 

@@ -1,0 +1,29 @@
+---
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+	articles: Article[];
+}
+const { articles } = Astro.props;
+---
+
+<div class="articles">
+	{
+		articles.length ? (
+			articles.map(({ url, frontmatter }) => <ArticleCard url={url} {...frontmatter} />)
+		) : (
+			<p>No article yet</p>
+		)
+	}
+</div>
+
+<style lang="scss">
+	@use 'src/styles/abstracts/mixins' as *;
+	@use 'src/styles/abstracts/pallette' as *;
+	@use 'src/styles/abstracts/variables' as *;
+	.articles {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: $spacing-sm;
+	}
+</style>

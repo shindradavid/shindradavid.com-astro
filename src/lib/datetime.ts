@@ -8,6 +8,16 @@ export const formatDate = (date: string): string => {
 	return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
 };
 
+export const formatToDate = (date: string): string => {
+	let options: Intl.DateTimeFormatOptions = {
+		weekday: 'short',
+		year: 'numeric',
+		month: 'short',
+		day: 'numeric'
+	};
+	return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
+};
+
 export const formatToLocalTime = (date: string) => {
 	let options: Intl.DateTimeFormatOptions = {
 		hour: 'numeric',

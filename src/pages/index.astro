@@ -3,7 +3,8 @@
 // layouts
 import MainLayout from '@layouts/MainLayout.astro';
 // components
-import ArticleCard from '@components/ArticleCard.astro';
+import Hero from '@components/hero/Hero.astro';
+import LatestArticles from '@components/article/LatestArticles.astro';
 // lib
 // state
 const articles = await Astro.glob<ArticleFrontmatter>('./blog/**/*.mdx');
@@ -14,22 +15,10 @@ const seoMetadata: SeoMetadata = {
 ---
 
 <MainLayout {...seoMetadata}>
-	<h1>Astro</h1>
-	<section>
-		<header>
-			<h2>Latest blog articles</h2>
-			<a href="/blog" aria-label="see more articles">
-				see more <span class="sr-only">articles</span>
-			</a>
-		</header>
-		{
-			articles.length ? (
-				articles.map(({ url, frontmatter }) => <ArticleCard url={url} {...frontmatter} />)
-			) : (
-				<p>No article yet</p>
-			)
-		}
-	</section>
+	<main>
+		<Hero />
+		<LatestArticles articles={articles} />
+	</main>
 </MainLayout>
 
 <style lang="scss">
@@ -37,7 +26,7 @@ const seoMetadata: SeoMetadata = {
 	@use 'src/styles/abstracts/pallette' as *;
 	@use 'src/styles/abstracts/variables' as *;
 
-	section {
+	main {
 		@include page-lr-padding;
 	}
 </style>

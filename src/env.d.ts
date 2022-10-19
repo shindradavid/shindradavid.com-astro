@@ -15,6 +15,8 @@ interface ArticleFrontmatter {
 	draft: boolean;
 }
 
+type Article = import('astro').MDXInstance<ArticleFrontmatter>;
+
 interface SeoMetadata {
 	title: string;
 	description: string;

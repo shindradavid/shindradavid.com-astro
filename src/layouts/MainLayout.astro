@@ -40,9 +40,7 @@ const { title, description } = Astro.props;
 
 	<body>
 		<Header url={url} client:media="(max-width: 780px)" />
-		<main>
-			<slot />
-		</main>
+		<slot />
 		<Footer />
 	</body>
 </html>
