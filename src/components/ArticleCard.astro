@@ -26,14 +26,17 @@ const { title, readingTime, publishedOn, tags, url } = Astro.props;
 	@use 'src/styles/abstracts/pallette' as *;
 	@use 'src/styles/abstracts/variables' as *;
 	.article {
-		padding: $spacing-sm;
+		padding: $spacing-md;
 		margin: $spacing-sm 0;
 		background-color: var(--bg-secondary);
+		box-shadow: var(--shadow-xs);
+		border-radius: $radius-sm;
 		&__datetime {
 			font-size: var(--fs-xs);
 			color: var(--txt-tertiary);
 		}
 		&__title {
+			padding-top: $spacing-xs;
 			a {
 				text-decoration: none;
 			}
@@ -41,6 +44,7 @@ const { title, readingTime, publishedOn, tags, url } = Astro.props;
 		&__tags {
 			display: flex;
 			gap: $spacing-sm;
+			padding-top: $spacing-sm;
 			li {
 				margin-left: 0;
 				list-style-type: none;

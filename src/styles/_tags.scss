@@ -6,6 +6,8 @@
 	font-weight: 600;
 	line-height: 1;
 	padding: $spacing-xs $spacing-sm;
+	box-shadow: var(--shadow-sm);
+	border-radius: $radius-xs;
 }
 
 .tag-html {

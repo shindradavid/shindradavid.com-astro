@@ -20,6 +20,11 @@
 	--txt-info: ;
 	--txt-warning: ;
 	--txt-danger: ;
+	/* shadows */
+	--shadow-xs: 0 1px 4px #{$shadow-color};
+	--shadow-sm: 0 2px 8px #{$shadow-color};
+	--shadow-md: 0 4px 16px #{$shadow-color};
+	--shadow-lg: 0 8px 24px #{$shadow-color};
 
 	--divider: #{color.adjust($gray-200, $alpha: -0.2)};
 	/* brand colors */
