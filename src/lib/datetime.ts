@@ -8,7 +8,18 @@ export const formatDate = (date: string): string => {
 	return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
 };
 
-export const formatTimeZoneAwareDate = (date: string): string => {
+export const formatToLocalTime = (date: string) => {
+	let options: Intl.DateTimeFormatOptions = {
+		hour: 'numeric',
+		minute: 'numeric',
+		second: 'numeric',
+		timeZone: 'EAT',
+		timeZoneName: 'short'
+	};
+	return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
+};
+
+export const formatToUTCDateTime = (date: string): string => {
 	let options: Intl.DateTimeFormatOptions = {
 		hour: 'numeric',
 		minute: 'numeric',
