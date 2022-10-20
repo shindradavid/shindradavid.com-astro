@@ -1,12 +1,12 @@
 @use './abstracts/mixins' as *;
 @use './abstracts/variables' as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Quicksand:wght@400;500;600&display=swap');
 
 :root {
 	/* font-family */
-	--ff-serif: 'Merriweather', sans-serif;
-	--ff-sans: 'Inter', Helvetica, Arial, sans-serif;
+	--ff-serif: 'Frank Ruhl Libre', sans-serif;
+	--ff-sans: 'Quicksand', Helvetica, Arial, sans-serif;
 	--ff-mono: 'Fira Code', 'Fira Mono', monospace;
 	--ff-body: var(--ff-sans);
 	--ff-heading: var(--ff-serif);
