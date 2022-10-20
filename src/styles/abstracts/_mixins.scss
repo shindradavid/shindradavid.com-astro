@@ -83,6 +83,7 @@
 	font-weight: 600;
 	letter-spacing: 2px;
 	text-decoration: none;
+	border-radius: $radius-xs;
 	&:hover {
 		filter: brightness(1.1);
 	}

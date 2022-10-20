@@ -16,6 +16,7 @@
 	--txt-primary: #{$gray-0};
 	--txt-secondary: #{$gray-50};
 	--txt-tertiary: #{$gray-100};
+	--txt-btn: ;
 	--txt-ok: ;
 	--txt-info: ;
 	--txt-warning: ;
@@ -28,7 +29,7 @@
 
 	--divider: #{color.adjust($gray-200, $alpha: -0.2)};
 	/* brand colors */
-	--accent-color: hsl(42, 98%, 50%);
+	--accent-color: hsl(44, 100%, 55%);
 }
 
 /* width */

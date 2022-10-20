@@ -2,14 +2,18 @@
 ---
 
 <section class="hero">
-	<div class="copy">
-		<h1 class="title">I create conversion optimized marketing and e-commerce websites.</h1>
-		<div class="copy">
-			<p class="description">Hi, Iam Shindra David, a web developer based in Uganda</p>
-			<a href="/contact" class="cta">contact me</a>
+	<div class="hero__copy">
+		<h1 class="title">Conversion optimized websites that drive sales.</h1>
+		<div class="description">
+			<p>Hi, Iam Shindra David, a freelance web developer based in Uganda</p>
+			<ul aria-label="kinds of websites i make">
+				<li>E-commerce websites.</li>
+				<li>Marketing websites.</li>
+			</ul>
+			<a href="/contact">contact me</a>
 		</div>
 	</div>
-	<div class="portfolio"></div>
+	<div class="hero__portfolio"></div>
 </section>
 
 <style lang="scss">
@@ -19,12 +23,28 @@
 
 	.hero {
 		--bg-primary: var(--accent-color);
+		--bg-btn: #{$gray-900};
 		--txt-primary: #{$gray-900};
-		--txt-secondary: #{$gray-800};
+		--txt-secondary: #{$gray-900};
+		--txt-btn: #{$gray-50};
 
 		background-color: var(--bg-primary);
 		color: var(--txt-secondary);
 		padding: $spacing-lg 0;
 		@include page-lr-padding;
+
+		&__copy {
+			@include screen-lg {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+			}
+			.description {
+				a {
+					display: inline-block;
+					margin: $spacing-sm 0;
+					@include btn-primary;
+				}
+			}
+		}
 	}
 </style>
