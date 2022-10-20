@@ -5,9 +5,27 @@ const seoMetadata: SeoMetadata = {
 	title: "Let's connect",
 	description: 'Find answers to questions am frequently asked.'
 };
+
+const schema = JSON.stringify([
+	{
+		'@context': 'http://schema.org',
+		'@graph': [
+			{
+				'@type': 'WebSite',
+				name: 'Shindra David',
+				url: Astro.site
+			},
+			{
+				'@type': 'Organization',
+				name: 'Food Network',
+				url: 'https://www.foodnetwork.com'
+			}
+		]
+	}
+]);
 ---
 
-<MainLayout {...seoMetadata}>
+<MainLayout {...seoMetadata} schema={schema}>
 	<h1>Contact</h1>
 </MainLayout>
 

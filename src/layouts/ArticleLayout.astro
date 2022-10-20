@@ -18,9 +18,11 @@ const seoMetadata: SeoMetadata = {
 	title: frontmatter.title,
 	description: frontmatter.description
 };
+
+const schema = JSON.stringify({});
 ---
 
-<MainLayout {...seoMetadata}>
+<MainLayout {...seoMetadata} schema={schema}>
 	<article itemscope itemtype="https://schema.org/Article" class="article">
 		<header class="article__header">
 			<ul aria-label="breadcrumbs" class="breadcrumbs">

@@ -6,9 +6,11 @@ import Footer from '@components/footer/Footer.astro';
 
 const url = Astro.url.pathname;
 
-interface Props extends SeoMetadata {}
+interface Props extends SeoMetadata {
+	schema: string;
+}
 
-const { title, description } = Astro.props;
+const { title, description, schema } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -36,6 +38,8 @@ const { title, description } = Astro.props;
 		<meta name="og:description" content={description} />
 		<meta name="og:image" content="" />
 		<meta name="og:image:alt" content="" />
+		<!-- schema.org  -->
+		<script type="application/ld+json" set:html={schema}></script>
 	</head>
 
 	<body>
