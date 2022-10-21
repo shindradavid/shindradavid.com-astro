@@ -3,6 +3,9 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import svelte from '@astrojs/svelte';
+// rehype plugins
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 // remark plugins
 import { remarkReadingTime } from './src/lib/remark-plugins';
 
@@ -11,7 +14,7 @@ export default defineConfig({
 	markdown: {
 		syntaxHighlight: 'prism',
 		remarkPlugins: [remarkReadingTime],
-		rehypePlugins: [],
+		rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
 		extendDefaultPlugins: true
 	},
 	integrations: [sitemap(), mdx(), svelte()]
