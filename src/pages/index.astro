@@ -1,5 +1,7 @@
 ---
 // types
+// layouts
+import BaseLayout from '@layouts/BaseLayout.astro';
 // components
 import Hero from '@components/hero/Hero.astro';
 import LatestArticles from '@components/article/LatestArticles.astro';
@@ -12,15 +14,6 @@ const seoMetadata: SeoMetadata = {
 };
 
 import '@styles/global.scss';
-
-import Header from '@components/header/Header.svelte';
-import Footer from '@components/footer/Footer.astro';
-
-const url = Astro.url.pathname;
-
-interface Props extends SeoMetadata {}
-
-const { title, description } = Astro.props;
 
 const schema = JSON.stringify([
 	{
@@ -97,46 +90,15 @@ const schema = JSON.stringify([
 ]);
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{title}</title>
-		<meta name="author" content="Shindra David" />
-		<meta name="description" content={description} />
-		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-		<!-- twitter card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="@ShindraDavid" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="" />
-		<meta name="twitter:image:alt" content="" />
-		<!-- open graph tags -->
-		<meta name="og:locale" content="en" />
-		<meta name="og:type" content="article" />
-		<meta name="og:site_name" content="shindradavid.com" />
-		<meta name="og:title" content={title} />
-		<meta name="og:description" content={description} />
-		<meta name="og:image" content="" />
-		<meta name="og:image:alt" content="" />
-		<!-- schema.org  -->
-		<script type="application/ld+json" set:html={schema}></script>
-	</head>
+<BaseLayout {...seoMetadata} schema={schema}>
+	<main>
+		<Hero />
+		<LatestArticles articles={articles} />
+	</main>
 
-	<body>
-		<Header url={url} client:media="(max-width: 780px)" />
-		<main>
-			<Hero />
-			<LatestArticles articles={articles} />
-		</main>
-		<Footer />
-		<style lang="scss">
-			@use 'src/styles/abstracts/mixins' as *;
-			@use 'src/styles/abstracts/pallette' as *;
-			@use 'src/styles/abstracts/variables' as *;
-		</style>
-	</body>
-</html>
+	<style lang="scss">
+		@use 'src/styles/abstracts/mixins' as *;
+		@use 'src/styles/abstracts/pallette' as *;
+		@use 'src/styles/abstracts/variables' as *;
+	</style>
+</BaseLayout>

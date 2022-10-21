@@ -1,14 +1,16 @@
 ---
-import MainLayout from '@layouts/MainLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 
 const seoMetadata: SeoMetadata = {
 	title: '404 - Not Found',
 	description: 'The page you were looking for was not found'
 };
+
+const schema = JSON.stringify({});
 ---
 
-<MainLayout {...seoMetadata}>
+<BaseLayout {...seoMetadata} schema={schema}>
 	<h1>404 - Not Found</h1>
-</MainLayout>
+</BaseLayout>
 
 <style lang="scss"></style>

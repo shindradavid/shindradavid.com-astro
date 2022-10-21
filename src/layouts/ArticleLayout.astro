@@ -1,28 +1,66 @@
 ---
 import '@styles/code.scss';
-
-import MainLayout from './MainLayout.astro';
-
+// types
+import type { MarkdownLayoutProps } from 'astro';
+interface Props extends MarkdownLayoutProps<ArticleFrontmatter> {}
+// layouts
+import BaseLayout from './BaseLayout.astro';
+// components
+import TableOfContents from '@components/TableOfContents.svelte';
+// icons
 import ChevronRightLine from '@lib/icons/line/ChevronRightLine.svelte';
-
 // lib
 import { formatToDate } from '@lib/datetime';
-
 // props
-import type { MarkdownLayoutProps } from 'astro';
-
-interface Props extends MarkdownLayoutProps<ArticleFrontmatter> {}
-
-const { frontmatter, url } = Astro.props;
+const { frontmatter, url, headings } = Astro.props;
+// state
 const seoMetadata: SeoMetadata = {
 	title: frontmatter.title,
 	description: frontmatter.description
 };
 
-const schema = JSON.stringify({});
+const schema = JSON.stringify({
+	'@context': 'http://schema.org',
+	'@graph': [
+		{
+			'@type': 'WebSite',
+			name: 'Shindra David',
+			url: Astro.site
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{
+					'@type': 'ListItem',
+					position: 1,
+					item: {
+						'@id': Astro.site,
+						name: 'Home'
+					}
+				},
+				{
+					'@type': 'ListItem',
+					position: 2,
+					item: {
+						'@id': new URL('/blog', Astro.site),
+						name: 'Blog'
+					}
+				},
+				{
+					'@type': 'ListItem',
+					position: 3,
+					item: {
+						'@id': new URL(url ? url : '', Astro.site),
+						name: frontmatter.title
+					}
+				}
+			]
+		}
+	]
+});
 ---
 
-<MainLayout {...seoMetadata} schema={schema}>
+<BaseLayout {...seoMetadata} schema={schema}>
 	<main>
 		<article itemscope itemtype="https://schema.org/Article" class="article">
 			<header class="article__header">
@@ -50,13 +88,36 @@ const schema = JSON.stringify({});
 				<slot />
 			</section>
 		</article>
+		<aside>
+			<nav aria-labelledby="toc-heading">
+				<h2 id="toc-heading">In this article</h2>
+				<TableOfContents headings={headings} client:load />
+			</nav>
+		</aside>
 	</main>
-</MainLayout>
+</BaseLayout>
 
 <style lang="scss">
 	@use 'src/styles/abstracts/mixins' as *;
 	@use 'src/styles/abstracts/pallette' as *;
 	@use 'src/styles/abstracts/variables' as *;
+
+	main {
+		display: grid;
+		grid-template-areas: 'article aside';
+		grid-template-columns: 2fr 1fr;
+
+		article {
+			grid-area: article;
+		}
+
+		aside {
+			grid-area: aside;
+			height: 100vh;
+			position: sticky;
+			top: 0;
+		}
+	}
 
 	h1 {
 		text-transform: uppercase;

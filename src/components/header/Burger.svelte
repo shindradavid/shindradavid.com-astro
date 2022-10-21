@@ -1,4 +1,5 @@
 <script lang="ts">
+	// props
 	export let open: boolean;
 </script>
 

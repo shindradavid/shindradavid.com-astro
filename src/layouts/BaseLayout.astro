@@ -1,16 +1,17 @@
 ---
 import '@styles/global.scss';
-
-import Header from '@components/header/Header.svelte';
-import Footer from '@components/footer/Footer.astro';
-
-const url = Astro.url.pathname;
-
+// types
 interface Props extends SeoMetadata {
 	schema: string;
 }
-
+// components
+import Header from '@components/header/Header.svelte';
+import Footer from '@components/footer/Footer.astro';
+// project
+// props
 const { title, description, schema } = Astro.props;
+// state
+const { pathname } = Astro.url;
 ---
 
 <!DOCTYPE html>
@@ -43,17 +44,8 @@ const { title, description, schema } = Astro.props;
 	</head>
 
 	<body>
-		<Header url={url} client:media="(max-width: 780px)" />
-		<main>
-			<slot />
-		</main>
+		<Header pathname={pathname} client:media="(max-width: 780px)" />
+		<slot />
 		<Footer />
-		<style lang="scss">
-			@use 'src/styles/abstracts/mixins' as *;
-
-			main {
-				@include page-lr-padding;
-			}
-		</style>
 	</body>
 </html>

@@ -1,14 +1,16 @@
 ---
-import MainLayout from '@layouts/MainLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 
 const seoMetadata: SeoMetadata = {
 	title: 'FAQs',
 	description: 'Find answers to questions am frequently asked.'
 };
+
+const schema = JSON.stringify({});
 ---
 
-<MainLayout {...seoMetadata}>
+<BaseLayout {...seoMetadata} schema={schema}>
 	<h1>FAQ</h1>
-</MainLayout>
+</BaseLayout>
 
 <style lang="scss"></style>
