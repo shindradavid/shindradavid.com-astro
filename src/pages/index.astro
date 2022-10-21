@@ -43,16 +43,18 @@ const schema = JSON.stringify([
 					image: '[image url of person]',
 					jobTitle: 'Web developer',
 					telephone: '+256702557298',
-					email: 'shindradavid.dev@gmail.com',
+					email: 'mailto:shindradavid.dev@gmail.com',
 					sameAs: [
 						'https://twitter.com/shindradavid',
 						'https://www.linkedin.com/in/shindradavid',
 						'https://github.com/shindradavid'
 					],
 					nationality: {
+						'@type': 'Country',
 						name: 'Uganda',
 						sameAs: 'https://en.wikipedia.org/wiki/Uganda'
 					},
+					gender: {},
 					makesOffer: {
 						'@type': 'Offer',
 						itemOffered: {
